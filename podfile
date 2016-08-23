@@ -1,0 +1,7 @@
+platform :ios, '9.3'
+
+target 'Schedule' do
+    pod ‘FXBlurView’,’~> 1.6.4’
+    pod 'AFNetworking’,'~> 2.5.0'
+end
+

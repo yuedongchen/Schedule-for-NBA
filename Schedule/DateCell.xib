@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DateCell">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lta-I1-cag">
+                        <rect key="frame" x="34" y="0.0" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="BIB-es-zNa"/>
+                            <constraint firstAttribute="height" constant="16" id="fJJ-DH-u7A"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkd-Bu-pZV">
+                        <rect key="frame" x="0.0" y="14" width="50" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Uhg-sh-vFX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZ3-A4-zTK">
+                        <rect key="frame" x="0.0" y="32" width="50" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="KP2-Va-rfv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Lta-I1-cag" secondAttribute="trailing" id="002-cy-pQi"/>
+                <constraint firstAttribute="trailing" secondItem="EZ3-A4-zTK" secondAttribute="trailing" id="3yf-s3-ojU"/>
+                <constraint firstItem="dkd-Bu-pZV" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-0.5" id="5V1-Lk-KWP"/>
+                <constraint firstAttribute="bottom" secondItem="EZ3-A4-zTK" secondAttribute="bottom" id="8x7-aN-PEq"/>
+                <constraint firstItem="EZ3-A4-zTK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LGN-Bt-Pna"/>
+                <constraint firstItem="dkd-Bu-pZV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e69-pV-DcH"/>
+                <constraint firstItem="Lta-I1-cag" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="vXu-Sn-SWB"/>
+                <constraint firstAttribute="trailing" secondItem="dkd-Bu-pZV" secondAttribute="trailing" id="w9U-hv-5qw"/>
+            </constraints>
+            <connections>
+                <outlet property="dayLabel" destination="Lta-I1-cag" id="NNk-dB-zPR"/>
+                <outlet property="timeLabel" destination="EZ3-A4-zTK" id="UBz-2e-gr7"/>
+                <outlet property="vsTeamLabel" destination="dkd-Bu-pZV" id="5aM-aX-r1U"/>
+            </connections>
+            <point key="canvasLocation" x="389" y="422"/>
+        </collectionViewCell>
+    </objects>
+</document>
