@@ -88,7 +88,7 @@ static NSString * const reuseIdentifier = @"DateCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"确定更换主队为“%@”", [[self.dataManager teamDic] objectForKey:[[[self.dataManager teamDic] allKeys] objectAtIndex:indexPath.item]]] message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"您确定主队为“%@”", [[self.dataManager teamDic] objectForKey:[[[self.dataManager teamDic] allKeys] objectAtIndex:indexPath.item]]] message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

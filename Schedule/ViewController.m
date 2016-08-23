@@ -76,7 +76,7 @@ UIPopoverPresentationControllerDelegate>
     
     if (![[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM]) {
         [self changeHomeTeamAction:self.chageButton];
-        self.titleLabel.text = @"请选择主队";
+        self.titleLabel.text = @"";
     } else {
         self.teamId = [[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM];
     }
@@ -452,16 +452,14 @@ UIPopoverPresentationControllerDelegate>
     if (![[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM]) {
         return NO;
     }
-    return YES;
-}
-
-- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
-{
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.maskButton.alpha = 0;
     } completion:^(BOOL finished) {
         [self.maskButton removeFromSuperview];
     }];
+    
+    return YES;
 }
 
 #pragma mark - DataManagerDelegate
