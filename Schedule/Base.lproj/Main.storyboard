@@ -135,6 +135,16 @@
                                     <action selector="changeHomeTeamAction:" destination="EGs-ny-irz" eventType="touchUpInside" id="xTB-YA-VdA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注：“@”代表客场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dm4-G1-Gu4">
+                                <rect key="frame" x="20" y="579" width="170" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="JXr-BK-pCo"/>
+                                    <constraint firstAttribute="width" constant="170" id="Rx0-O2-Nk3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -143,8 +153,10 @@
                             <constraint firstItem="R2u-D0-t1N" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" constant="72" id="6kD-v4-CTb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ELk-Ja-1KB" secondAttribute="trailing" constant="2" id="ApK-B8-9HQ"/>
                             <constraint firstItem="M84-vF-gKY" firstAttribute="centerX" secondItem="Mms-VW-f5M" secondAttribute="centerX" id="BJb-ea-54i"/>
+                            <constraint firstItem="Dm4-G1-Gu4" firstAttribute="leading" secondItem="Mms-VW-f5M" secondAttribute="leadingMargin" id="CYY-gf-vhA"/>
                             <constraint firstItem="ELk-Ja-1KB" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" constant="32" id="D21-aB-F2U"/>
                             <constraint firstItem="B6P-Zp-5GW" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" constant="20" id="Fz7-1w-4ac"/>
+                            <constraint firstItem="Dm4-G1-Gu4" firstAttribute="top" secondItem="R2u-D0-t1N" secondAttribute="bottom" constant="12" id="K0u-xN-5Jk"/>
                             <constraint firstItem="d8k-kw-N62" firstAttribute="leading" secondItem="Mms-VW-f5M" secondAttribute="leadingMargin" id="SgL-4z-WDW"/>
                             <constraint firstItem="AKx-n9-x9U" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" constant="20" id="YbM-PW-aJC"/>
                             <constraint firstItem="d8k-kw-N62" firstAttribute="bottom" secondItem="Mms-VW-f5M" secondAttribute="bottomMargin" id="euA-R6-HXt"/>

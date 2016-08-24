@@ -179,6 +179,96 @@ UIPopoverPresentationControllerDelegate>
     return newDate;
 }
 
+#pragma mark - IBAction
+
+- (IBAction)gotoPreviousMonth:(UIButton *)sender
+{
+    [UIView transitionWithView:self.calendarView duration:0.5 options:UIViewAnimationOptionTransitionCurlDown animations:^(void) {
+        self.selectedDate = [self previousMonth:self.selectedDate];
+        
+    } completion:nil];
+}
+
+- (IBAction)gotoNextMonth:(UIButton *)sender
+{
+    [UIView transitionWithView:self.calendarView duration:0.5 options:UIViewAnimationOptionTransitionCurlUp animations:^(void) {
+        self.selectedDate = [self nextMonth:self.selectedDate];
+    } completion:nil];
+}
+
+- (IBAction)changeTeamAction:(UIButton *)sender
+{
+    [[UIApplication sharedApplication].keyWindow insertSubview:self.teamCollectionView aboveSubview:self.view];
+    self.teamCollectionView.frame = CGRectMake(-teamWidth, 0, teamWidth, self.view.bounds.size.height);
+    self.teamCollectionView.layer.cornerRadius = 0.f;
+    
+    [UIView animateWithDuration:0.35 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:15 options:0 animations:^{
+        self.view.frame = CGRectMake(teamWidth, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+        self.teamCollectionView.frame = CGRectMake(0, 0, teamWidth, self.view.bounds.size.height);
+    } completion:^(BOOL finished) {
+        self.maskButton = [[UIButton alloc] initWithFrame:self.view.bounds];
+        self.maskButton.backgroundColor = [UIColor clearColor];
+        [self.maskButton addTarget:self action:@selector(hideTeamListAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.maskButton];
+    }];
+}
+
+- (void)hideTeamListAction:(UIButton *)button
+{
+    [UIView animateWithDuration:0.35 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:15 options:0 animations:^{
+        self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+        self.teamCollectionView.frame = CGRectMake(-teamWidth, 0, teamWidth, self.view.bounds.size.height);
+    } completion:^(BOOL finished) {
+        [self.maskButton removeFromSuperview];
+    }];
+}
+
+- (IBAction)changeHomeTeamAction:(UIButton *)sender
+{
+    CollectionViewController *vc = [[CollectionViewController alloc] initWithDataManager:self.dataManager andDissmissBlock:^(NSString *teamId) {
+        if (![[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM]) {
+            self.teamId = teamId;
+        }
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            self.maskButton.alpha = 0;
+        } completion:^(BOOL finished) {
+            [self.maskButton removeFromSuperview];
+        }];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:teamId forKey:HOME_TEAM];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+    
+    vc.preferredContentSize = CGSizeMake(100, 400);
+    
+    vc.modalPresentationStyle = UIModalPresentationPopover;
+    
+    vc.popoverPresentationController.delegate = self;
+    
+    vc.popoverPresentationController.sourceView = sender;
+    
+    vc.popoverPresentationController.sourceRect = sender.bounds;
+    
+    [self presentViewController:vc animated:YES completion:nil];
+    
+    self.maskButton = [[UIButton alloc] initWithFrame:self.view.bounds];
+    self.maskButton.backgroundColor = [UIColor blackColor];
+    self.maskButton.alpha = 0;
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM]) {
+        [self.maskButton setTitle:@"请选择主队" forState:UIControlStateNormal];
+        [self.maskButton setTitleEdgeInsets:UIEdgeInsetsMake(20, 10, self.view.frame.size.height - 70, 10)];
+        [self.maskButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.maskButton.titleLabel setFont:[UIFont systemFontOfSize:50]];
+    } else {
+        [self.maskButton setTitle:@"" forState:UIControlStateNormal];
+    }
+    [self.view addSubview:self.maskButton];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.maskButton.alpha = 0.4;
+    }];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -348,96 +438,6 @@ UIPopoverPresentationControllerDelegate>
     } else {
         return CGSizeZero;
     }
-}
-
-#pragma mark - IBAction
-
-- (IBAction)gotoPreviousMonth:(UIButton *)sender
-{
-    [UIView transitionWithView:self.calendarView duration:0.5 options:UIViewAnimationOptionTransitionCurlDown animations:^(void) {
-        self.selectedDate = [self previousMonth:self.selectedDate];
-        
-    } completion:nil];
-}
-
-- (IBAction)gotoNextMonth:(UIButton *)sender
-{
-    [UIView transitionWithView:self.calendarView duration:0.5 options:UIViewAnimationOptionTransitionCurlUp animations:^(void) {
-        self.selectedDate = [self nextMonth:self.selectedDate];
-    } completion:nil];
-}
-
-- (IBAction)changeTeamAction:(UIButton *)sender
-{
-    [[UIApplication sharedApplication].keyWindow insertSubview:self.teamCollectionView aboveSubview:self.view];
-    self.teamCollectionView.frame = CGRectMake(-teamWidth, 0, teamWidth, self.view.bounds.size.height);
-    self.teamCollectionView.layer.cornerRadius = 0.f;
-    
-    [UIView animateWithDuration:0.35 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:15 options:0 animations:^{
-        self.view.frame = CGRectMake(teamWidth, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-        self.teamCollectionView.frame = CGRectMake(0, 0, teamWidth, self.view.bounds.size.height);
-    } completion:^(BOOL finished) {
-        self.maskButton = [[UIButton alloc] initWithFrame:self.view.bounds];
-        self.maskButton.backgroundColor = [UIColor clearColor];
-        [self.maskButton addTarget:self action:@selector(hideTeamListAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.maskButton];
-    }];
-}
-
-- (void)hideTeamListAction:(UIButton *)button
-{
-    [UIView animateWithDuration:0.35 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:15 options:0 animations:^{
-        self.view.frame = CGRectMake(0, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-        self.teamCollectionView.frame = CGRectMake(-teamWidth, 0, teamWidth, self.view.bounds.size.height);
-    } completion:^(BOOL finished) {
-        [self.maskButton removeFromSuperview];
-    }];
-}
-
-- (IBAction)changeHomeTeamAction:(UIButton *)sender
-{
-    CollectionViewController *vc = [[CollectionViewController alloc] initWithDataManager:self.dataManager andDissmissBlock:^(NSString *teamId) {
-        if (![[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM]) {
-            self.teamId = teamId;
-        }
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            self.maskButton.alpha = 0;
-        } completion:^(BOOL finished) {
-            [self.maskButton removeFromSuperview];
-        }];
-        
-        [[NSUserDefaults standardUserDefaults] setObject:teamId forKey:HOME_TEAM];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }];
-    
-    vc.preferredContentSize = CGSizeMake(100, 400);
-    
-    vc.modalPresentationStyle = UIModalPresentationPopover;
-    
-    vc.popoverPresentationController.delegate = self;
-    
-    vc.popoverPresentationController.sourceView = sender;
-    
-    vc.popoverPresentationController.sourceRect = sender.bounds;
-    
-    [self presentViewController:vc animated:YES completion:nil];
-    
-    self.maskButton = [[UIButton alloc] initWithFrame:self.view.bounds];
-    self.maskButton.backgroundColor = [UIColor blackColor];
-    self.maskButton.alpha = 0;
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM]) {
-        [self.maskButton setTitle:@"请选择主队" forState:UIControlStateNormal];
-        [self.maskButton setTitleEdgeInsets:UIEdgeInsetsMake(20, 10, self.view.frame.size.height - 70, 10)];
-        [self.maskButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.maskButton.titleLabel setFont:[UIFont systemFontOfSize:50]];
-    } else {
-        [self.maskButton setTitle:@"" forState:UIControlStateNormal];
-    }
-    [self.view addSubview:self.maskButton];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.maskButton.alpha = 0.4;
-    }];
 }
 
 #pragma mark - UIAdaptivePresentationControllerDelegate
