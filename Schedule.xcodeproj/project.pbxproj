@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		C4474A7D47416EBC89C647F7 /* libPods-Schedule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7143F4ED1467038611F57EF1 /* libPods-Schedule.a */; };
-		FC590A551D6A949D00402BB0 /* TeamCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC590A531D6A949D00402BB0 /* TeamCollectionViewCell.m */; };
-		FC590A561D6A949D00402BB0 /* TeamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC590A541D6A949D00402BB0 /* TeamCollectionViewCell.xib */; };
-		FC590A631D6AB90D00402BB0 /* TeamHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC590A621D6AB90D00402BB0 /* TeamHeaderView.m */; };
-		FC590A651D6AB92400402BB0 /* TeamHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC590A641D6AB92400402BB0 /* TeamHeaderView.xib */; };
-		FC590A6D1D6AE80800402BB0 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC590A6C1D6AE80800402BB0 /* CollectionViewController.m */; };
+		FC48A5631D74351400286616 /* DateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48A5531D74351400286616 /* DateCell.m */; };
+		FC48A5641D74351400286616 /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC48A5541D74351400286616 /* DateCell.xib */; };
+		FC48A5651D74351400286616 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48A5571D74351400286616 /* DataManager.m */; };
+		FC48A5661D74351400286616 /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48A5591D74351400286616 /* GameInfo.m */; };
+		FC48A5671D74351400286616 /* ChangeHomeTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48A55C1D74351400286616 /* ChangeHomeTeamViewController.m */; };
+		FC48A5681D74351400286616 /* TeamCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48A55E1D74351400286616 /* TeamCollectionViewCell.m */; };
+		FC48A5691D74351400286616 /* TeamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC48A55F1D74351400286616 /* TeamCollectionViewCell.xib */; };
+		FC48A56A1D74351400286616 /* TeamHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48A5611D74351400286616 /* TeamHeaderView.m */; };
+		FC48A56B1D74351400286616 /* TeamHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC48A5621D74351400286616 /* TeamHeaderView.xib */; };
 		FC606F941D6712DC00C17136 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606F931D6712DC00C17136 /* main.m */; };
 		FC606F971D6712DC00C17136 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606F961D6712DC00C17136 /* AppDelegate.m */; };
 		FC606F9A1D6712DC00C17136 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606F991D6712DC00C17136 /* ViewController.m */; };
@@ -21,10 +25,6 @@
 		FC606FA21D6712DC00C17136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC606FA01D6712DC00C17136 /* LaunchScreen.storyboard */; };
 		FC606FAD1D6712DC00C17136 /* ScheduleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606FAC1D6712DC00C17136 /* ScheduleTests.m */; };
 		FC606FB81D6712DC00C17136 /* ScheduleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606FB71D6712DC00C17136 /* ScheduleUITests.m */; };
-		FC606FCC1D67137900C17136 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606FC61D67137900C17136 /* DataManager.m */; };
-		FC606FCD1D67137900C17136 /* DateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606FC81D67137900C17136 /* DateCell.m */; };
-		FC606FCE1D67137900C17136 /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC606FC91D67137900C17136 /* DateCell.xib */; };
-		FC606FCF1D67137900C17136 /* GameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606FCB1D67137900C17136 /* GameInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,14 +48,21 @@
 		56840D7EE079523A1186FC6D /* Pods-Schedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule/Pods-Schedule.debug.xcconfig"; sourceTree = "<group>"; };
 		6B6BCF4B51A26A60117DB8AE /* Pods-Schedule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule.release.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule/Pods-Schedule.release.xcconfig"; sourceTree = "<group>"; };
 		7143F4ED1467038611F57EF1 /* libPods-Schedule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Schedule.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC590A521D6A949D00402BB0 /* TeamCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamCollectionViewCell.h; sourceTree = "<group>"; };
-		FC590A531D6A949D00402BB0 /* TeamCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamCollectionViewCell.m; sourceTree = "<group>"; };
-		FC590A541D6A949D00402BB0 /* TeamCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewCell.xib; sourceTree = "<group>"; };
-		FC590A611D6AB90D00402BB0 /* TeamHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamHeaderView.h; sourceTree = "<group>"; };
-		FC590A621D6AB90D00402BB0 /* TeamHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamHeaderView.m; sourceTree = "<group>"; };
-		FC590A641D6AB92400402BB0 /* TeamHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamHeaderView.xib; sourceTree = "<group>"; };
-		FC590A6B1D6AE80800402BB0 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
-		FC590A6C1D6AE80800402BB0 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		FC48A5521D74351400286616 /* DateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCell.h; sourceTree = "<group>"; };
+		FC48A5531D74351400286616 /* DateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateCell.m; sourceTree = "<group>"; };
+		FC48A5541D74351400286616 /* DateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateCell.xib; sourceTree = "<group>"; };
+		FC48A5561D74351400286616 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		FC48A5571D74351400286616 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		FC48A5581D74351400286616 /* GameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameInfo.h; sourceTree = "<group>"; };
+		FC48A5591D74351400286616 /* GameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameInfo.m; sourceTree = "<group>"; };
+		FC48A55B1D74351400286616 /* ChangeHomeTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeHomeTeamViewController.h; sourceTree = "<group>"; };
+		FC48A55C1D74351400286616 /* ChangeHomeTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeHomeTeamViewController.m; sourceTree = "<group>"; };
+		FC48A55D1D74351400286616 /* TeamCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamCollectionViewCell.h; sourceTree = "<group>"; };
+		FC48A55E1D74351400286616 /* TeamCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamCollectionViewCell.m; sourceTree = "<group>"; };
+		FC48A55F1D74351400286616 /* TeamCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionViewCell.xib; sourceTree = "<group>"; };
+		FC48A5601D74351400286616 /* TeamHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamHeaderView.h; sourceTree = "<group>"; };
+		FC48A5611D74351400286616 /* TeamHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamHeaderView.m; sourceTree = "<group>"; };
+		FC48A5621D74351400286616 /* TeamHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamHeaderView.xib; sourceTree = "<group>"; };
 		FC606F8F1D6712DC00C17136 /* Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC606F931D6712DC00C17136 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC606F951D6712DC00C17136 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,13 +79,6 @@
 		FC606FB31D6712DC00C17136 /* ScheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScheduleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC606FB71D6712DC00C17136 /* ScheduleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleUITests.m; sourceTree = "<group>"; };
 		FC606FB91D6712DC00C17136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC606FC51D67137900C17136 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
-		FC606FC61D67137900C17136 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		FC606FC71D67137900C17136 /* DateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCell.h; sourceTree = "<group>"; };
-		FC606FC81D67137900C17136 /* DateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateCell.m; sourceTree = "<group>"; };
-		FC606FC91D67137900C17136 /* DateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateCell.xib; sourceTree = "<group>"; };
-		FC606FCA1D67137900C17136 /* GameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameInfo.h; sourceTree = "<group>"; };
-		FC606FCB1D67137900C17136 /* GameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,33 +124,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FC352DCD1D6BE4AA0016D457 /* date */ = {
+		FC48A5511D74351400286616 /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
-				FC606FC71D67137900C17136 /* DateCell.h */,
-				FC606FC81D67137900C17136 /* DateCell.m */,
-				FC606FC91D67137900C17136 /* DateCell.xib */,
+				FC48A5521D74351400286616 /* DateCell.h */,
+				FC48A5531D74351400286616 /* DateCell.m */,
+				FC48A5541D74351400286616 /* DateCell.xib */,
 			);
-			name = date;
+			path = CalendarView;
 			sourceTree = "<group>";
 		};
-		FC352DCE1D6BE4C80016D457 /* team */ = {
+		FC48A5551D74351400286616 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				FC606FC51D67137900C17136 /* DataManager.h */,
-				FC606FC61D67137900C17136 /* DataManager.m */,
-				FC606FCA1D67137900C17136 /* GameInfo.h */,
-				FC606FCB1D67137900C17136 /* GameInfo.m */,
-				FC590A521D6A949D00402BB0 /* TeamCollectionViewCell.h */,
-				FC590A531D6A949D00402BB0 /* TeamCollectionViewCell.m */,
-				FC590A541D6A949D00402BB0 /* TeamCollectionViewCell.xib */,
-				FC590A611D6AB90D00402BB0 /* TeamHeaderView.h */,
-				FC590A621D6AB90D00402BB0 /* TeamHeaderView.m */,
-				FC590A641D6AB92400402BB0 /* TeamHeaderView.xib */,
-				FC590A6B1D6AE80800402BB0 /* CollectionViewController.h */,
-				FC590A6C1D6AE80800402BB0 /* CollectionViewController.m */,
+				FC48A5561D74351400286616 /* DataManager.h */,
+				FC48A5571D74351400286616 /* DataManager.m */,
+				FC48A5581D74351400286616 /* GameInfo.h */,
+				FC48A5591D74351400286616 /* GameInfo.m */,
 			);
-			name = team;
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FC48A55A1D74351400286616 /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				FC48A55B1D74351400286616 /* ChangeHomeTeamViewController.h */,
+				FC48A55C1D74351400286616 /* ChangeHomeTeamViewController.m */,
+				FC48A55D1D74351400286616 /* TeamCollectionViewCell.h */,
+				FC48A55E1D74351400286616 /* TeamCollectionViewCell.m */,
+				FC48A55F1D74351400286616 /* TeamCollectionViewCell.xib */,
+				FC48A5601D74351400286616 /* TeamHeaderView.h */,
+				FC48A5611D74351400286616 /* TeamHeaderView.m */,
+				FC48A5621D74351400286616 /* TeamHeaderView.xib */,
+			);
+			path = Team;
 			sourceTree = "<group>";
 		};
 		FC606F861D6712DC00C17136 = {
@@ -178,8 +185,9 @@
 		FC606F911D6712DC00C17136 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				FC352DCE1D6BE4C80016D457 /* team */,
-				FC352DCD1D6BE4AA0016D457 /* date */,
+				FC48A5511D74351400286616 /* CalendarView */,
+				FC48A5551D74351400286616 /* Data */,
+				FC48A55A1D74351400286616 /* Team */,
 				FC606F951D6712DC00C17136 /* AppDelegate.h */,
 				FC606F961D6712DC00C17136 /* AppDelegate.m */,
 				FC606F981D6712DC00C17136 /* ViewController.h */,
@@ -326,12 +334,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC590A651D6AB92400402BB0 /* TeamHeaderView.xib in Resources */,
+				FC48A56B1D74351400286616 /* TeamHeaderView.xib in Resources */,
 				FC606FA21D6712DC00C17136 /* LaunchScreen.storyboard in Resources */,
 				FC606F9F1D6712DC00C17136 /* Assets.xcassets in Resources */,
 				FC606F9D1D6712DC00C17136 /* Main.storyboard in Resources */,
-				FC590A561D6A949D00402BB0 /* TeamCollectionViewCell.xib in Resources */,
-				FC606FCE1D67137900C17136 /* DateCell.xib in Resources */,
+				FC48A5691D74351400286616 /* TeamCollectionViewCell.xib in Resources */,
+				FC48A5641D74351400286616 /* DateCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,14 +413,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC606F9A1D6712DC00C17136 /* ViewController.m in Sources */,
-				FC606FCD1D67137900C17136 /* DateCell.m in Sources */,
-				FC606FCC1D67137900C17136 /* DataManager.m in Sources */,
-				FC606FCF1D67137900C17136 /* GameInfo.m in Sources */,
+				FC48A56A1D74351400286616 /* TeamHeaderView.m in Sources */,
+				FC48A5681D74351400286616 /* TeamCollectionViewCell.m in Sources */,
+				FC48A5671D74351400286616 /* ChangeHomeTeamViewController.m in Sources */,
+				FC48A5651D74351400286616 /* DataManager.m in Sources */,
 				FC606F971D6712DC00C17136 /* AppDelegate.m in Sources */,
-				FC590A551D6A949D00402BB0 /* TeamCollectionViewCell.m in Sources */,
-				FC590A631D6AB90D00402BB0 /* TeamHeaderView.m in Sources */,
+				FC48A5661D74351400286616 /* GameInfo.m in Sources */,
 				FC606F941D6712DC00C17136 /* main.m in Sources */,
-				FC590A6D1D6AE80800402BB0 /* CollectionViewController.m in Sources */,
+				FC48A5631D74351400286616 /* DateCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

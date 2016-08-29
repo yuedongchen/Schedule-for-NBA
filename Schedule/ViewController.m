@@ -12,7 +12,7 @@
 #import "DataManager.h"
 #import "GameInfo.h"
 #import "TeamCollectionViewCell.h"
-#import "CollectionViewController.h"
+#import "ChangeHomeTeamViewController.h"
 #import "TeamHeaderView.h"
 
 NSString *const HOME_TEAM = @"HOME_TEAM";
@@ -225,7 +225,7 @@ UIPopoverPresentationControllerDelegate>
 
 - (IBAction)changeHomeTeamAction:(UIButton *)sender
 {
-    CollectionViewController *vc = [[CollectionViewController alloc] initWithDataManager:self.dataManager andDissmissBlock:^(NSString *teamId) {
+    ChangeHomeTeamViewController *vc = [[ChangeHomeTeamViewController alloc] initWithDataManager:self.dataManager andDissmissBlock:^(NSString *teamId) {
         if (![[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM]) {
             self.teamId = teamId;
         }

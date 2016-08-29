@@ -1,5 +1,5 @@
 //
-//  CollectionViewController.h
+//  ChangeHomeTeamViewController.h
 //  Schedule
 //
 //  Created by yuedong_chen on 16/8/22.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataManager.h"
 
-@interface CollectionViewController : UICollectionViewController
+@interface ChangeHomeTeamViewController : UICollectionViewController
 
 - (id)initWithDataManager:(DataManager *)dataManager andDissmissBlock:(void (^)(NSString *teamId))blcok;
 

@@ -1,22 +1,22 @@
 //
-//  CollectionViewController.m
+//  ChangeHomeTeamViewController.m
 //  Schedule
 //
 //  Created by yuedong_chen on 16/8/22.
 //  Copyright © 2016年 yuedong_chen. All rights reserved.
 //
 
-#import "CollectionViewController.h"
+#import "ChangeHomeTeamViewController.h"
 #import "DateCell.h"
 
-@interface CollectionViewController ()
+@interface ChangeHomeTeamViewController ()
 
 @property (nonatomic, strong) DataManager *dataManager;
 @property (nonatomic, strong) void (^dissmissBlock)();
 
 @end
 
-@implementation CollectionViewController
+@implementation ChangeHomeTeamViewController
 
 static NSString * const reuseIdentifier = @"DateCell";
 
@@ -40,30 +40,13 @@ static NSString * const reuseIdentifier = @"DateCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
+
     [self.collectionView registerNib:[UINib nibWithNibName:reuseIdentifier bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -104,34 +87,5 @@ static NSString * const reuseIdentifier = @"DateCell";
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end
