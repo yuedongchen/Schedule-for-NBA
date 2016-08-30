@@ -21,15 +21,18 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - FXBlurView (1.6.4)
+  - Masonry (1.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
   - FXBlurView (~> 1.6.4)
+  - Masonry (~> 1.0.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
+  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
 
-PODFILE CHECKSUM: 8e492c2fd6d568ee7f5091a07006a2f8b36dd9ef
+PODFILE CHECKSUM: f39bd9c8a1413e8f7e7e745972d1697040091360
 
 COCOAPODS: 1.0.1

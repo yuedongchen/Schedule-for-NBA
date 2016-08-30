@@ -27,73 +27,6 @@
                                     <action selector="changeTeamAction:" destination="EGs-ny-irz" eventType="touchUpInside" id="nJD-Fp-hIj"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2u-D0-t1N">
-                                <rect key="frame" x="20" y="72" width="560" height="495"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIA-JJ-24o">
-                                        <rect key="frame" x="200" y="16" width="161" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="161" id="23D-Mh-Kjp"/>
-                                            <constraint firstAttribute="height" constant="21" id="DZr-EG-11u"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDI-JM-ePZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="12V-7G-HMO"/>
-                                            <constraint firstAttribute="width" constant="54" id="NrS-lX-tF6"/>
-                                        </constraints>
-                                        <state key="normal" image="bt_previous"/>
-                                        <connections>
-                                            <action selector="gotoPreviousMonth:" destination="EGs-ny-irz" eventType="touchUpInside" id="dmk-3E-gZo"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohx-gh-FN1">
-                                        <rect key="frame" x="506" y="0.0" width="54" height="54"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="54" id="3ay-bg-FVh"/>
-                                            <constraint firstAttribute="height" constant="54" id="bBd-f2-4A0"/>
-                                        </constraints>
-                                        <state key="normal" image="bt_next"/>
-                                        <connections>
-                                            <action selector="gotoNextMonth:" destination="EGs-ny-irz" eventType="touchUpInside" id="f0d-Vy-Ivj"/>
-                                        </connections>
-                                    </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ql2-uE-5eO">
-                                        <rect key="frame" x="0.0" y="54" width="560" height="441"/>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bU6-aw-pbG">
-                                            <size key="itemSize" width="50" height="50"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="EGs-ny-irz" id="VyH-y2-fEf"/>
-                                            <outlet property="delegate" destination="EGs-ny-irz" id="EEV-uj-ecm"/>
-                                        </connections>
-                                    </collectionView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.77685027250000005" blue="0.31955581640000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="wIA-JJ-24o" firstAttribute="centerX" secondItem="R2u-D0-t1N" secondAttribute="centerX" id="2lL-7y-JA6"/>
-                                    <constraint firstAttribute="bottom" secondItem="ql2-uE-5eO" secondAttribute="bottom" id="4RP-xf-3jW"/>
-                                    <constraint firstAttribute="width" constant="560" id="8cw-Pr-wbl"/>
-                                    <constraint firstItem="bDI-JM-ePZ" firstAttribute="top" secondItem="R2u-D0-t1N" secondAttribute="top" id="C3c-xX-VEb"/>
-                                    <constraint firstItem="bDI-JM-ePZ" firstAttribute="leading" secondItem="R2u-D0-t1N" secondAttribute="leading" id="NLZ-5W-IEV"/>
-                                    <constraint firstItem="ql2-uE-5eO" firstAttribute="leading" secondItem="R2u-D0-t1N" secondAttribute="leading" id="TWL-vC-dTJ"/>
-                                    <constraint firstItem="Ohx-gh-FN1" firstAttribute="top" secondItem="R2u-D0-t1N" secondAttribute="top" id="UnZ-bG-FUu"/>
-                                    <constraint firstItem="ql2-uE-5eO" firstAttribute="top" secondItem="R2u-D0-t1N" secondAttribute="top" constant="54" id="WhH-sw-SCM"/>
-                                    <constraint firstAttribute="trailing" secondItem="ql2-uE-5eO" secondAttribute="trailing" id="gAy-xE-5Ps"/>
-                                    <constraint firstAttribute="height" constant="495" id="i1B-3P-zkm"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ohx-gh-FN1" secondAttribute="trailing" id="oPf-Y2-MfU"/>
-                                    <constraint firstItem="wIA-JJ-24o" firstAttribute="top" secondItem="R2u-D0-t1N" secondAttribute="top" constant="16" id="zo2-pw-4mG"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6P-Zp-5GW">
                                 <rect key="frame" x="10" y="20" width="40" height="40"/>
                                 <constraints>
@@ -135,7 +68,7 @@
                                     <action selector="changeHomeTeamAction:" destination="EGs-ny-irz" eventType="touchUpInside" id="xTB-YA-VdA"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注：“@”代表客场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dm4-G1-Gu4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="注：“@”代表客场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dm4-G1-Gu4">
                                 <rect key="frame" x="20" y="579" width="170" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="JXr-BK-pCo"/>
@@ -150,31 +83,23 @@
                         <constraints>
                             <constraint firstItem="d8k-kw-N62" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" id="2Dw-Cu-qaS"/>
                             <constraint firstItem="AKx-n9-x9U" firstAttribute="trailing" secondItem="Mms-VW-f5M" secondAttribute="trailingMargin" constant="10" id="5FG-pY-Rhd"/>
-                            <constraint firstItem="R2u-D0-t1N" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" constant="72" id="6kD-v4-CTb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ELk-Ja-1KB" secondAttribute="trailing" constant="2" id="ApK-B8-9HQ"/>
                             <constraint firstItem="M84-vF-gKY" firstAttribute="centerX" secondItem="Mms-VW-f5M" secondAttribute="centerX" id="BJb-ea-54i"/>
                             <constraint firstItem="Dm4-G1-Gu4" firstAttribute="leading" secondItem="Mms-VW-f5M" secondAttribute="leadingMargin" id="CYY-gf-vhA"/>
                             <constraint firstItem="ELk-Ja-1KB" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" constant="32" id="D21-aB-F2U"/>
                             <constraint firstItem="B6P-Zp-5GW" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" constant="20" id="Fz7-1w-4ac"/>
-                            <constraint firstItem="Dm4-G1-Gu4" firstAttribute="top" secondItem="R2u-D0-t1N" secondAttribute="bottom" constant="12" id="K0u-xN-5Jk"/>
                             <constraint firstItem="d8k-kw-N62" firstAttribute="leading" secondItem="Mms-VW-f5M" secondAttribute="leadingMargin" id="SgL-4z-WDW"/>
                             <constraint firstItem="AKx-n9-x9U" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" constant="20" id="YbM-PW-aJC"/>
                             <constraint firstItem="d8k-kw-N62" firstAttribute="bottom" secondItem="Mms-VW-f5M" secondAttribute="bottomMargin" id="euA-R6-HXt"/>
                             <constraint firstItem="B6P-Zp-5GW" firstAttribute="leading" secondItem="Mms-VW-f5M" secondAttribute="leadingMargin" constant="-10" id="hoS-hb-BOV"/>
                             <constraint firstItem="M84-vF-gKY" firstAttribute="top" secondItem="Mms-VW-f5M" secondAttribute="topMargin" constant="28" id="pJg-SY-hG1"/>
-                            <constraint firstItem="R2u-D0-t1N" firstAttribute="centerX" secondItem="Mms-VW-f5M" secondAttribute="centerX" id="uEh-AU-XKx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gh3-VU-uPW"/>
                     <connections>
-                        <outlet property="calendarView" destination="R2u-D0-t1N" id="r8u-ha-ROA"/>
                         <outlet property="chageButton" destination="AKx-n9-x9U" id="Njx-kT-ssf"/>
-                        <outlet property="collectionView" destination="ql2-uE-5eO" id="V9R-Om-flE"/>
                         <outlet property="gestureButton" destination="d8k-kw-N62" id="MZ0-hf-pZN"/>
-                        <outlet property="height" destination="i1B-3P-zkm" id="FUz-pR-16Y"/>
                         <outlet property="titleLabel" destination="M84-vF-gKY" id="GlG-I7-q5t"/>
-                        <outlet property="width" destination="8cw-Pr-wbl" id="sjm-qz-Wx2"/>
-                        <outlet property="yearLabel" destination="wIA-JJ-24o" id="hPw-KG-p5c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9s0-oc-xN0" sceneMemberID="firstResponder"/>
@@ -185,7 +110,5 @@
     <resources>
         <image name="List" width="20" height="18"/>
         <image name="Refresh" width="20" height="20"/>
-        <image name="bt_next" width="20" height="20"/>
-        <image name="bt_previous" width="20" height="20"/>
     </resources>
 </document>

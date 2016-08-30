@@ -11,6 +11,6 @@
 
 @interface ChangeHomeTeamViewController : UICollectionViewController
 
-- (id)initWithDataManager:(DataManager *)dataManager andDissmissBlock:(void (^)(NSString *teamId))blcok;
+- (id)initWithDataDissmissBlock:(void (^)(NSString *teamId))blcok;
 
 @end

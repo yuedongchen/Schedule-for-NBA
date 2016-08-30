@@ -14,9 +14,11 @@
 #import "TeamCollectionViewCell.h"
 #import "ChangeHomeTeamViewController.h"
 #import "TeamHeaderView.h"
+#import "Masonry.h"
+
+#import "CalendarView.h"
 
 NSString *const HOME_TEAM = @"HOME_TEAM";
-NSString *const SZCalendarCellIdentifier = @"DateCell";
 NSString *const TeamCollectionViewCellIdentifier = @"TeamCollectionViewCell";
 NSString *const TeamHeaderViewIdentifier = @"TeamHeaderView";
 NSInteger const teamWidth = 200;
@@ -25,27 +27,17 @@ NSInteger const teamWidth = 200;
 <UICollectionViewDataSource,
 UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout,
-DataMangerDelegate,
 UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, strong) NSString *teamId;
-
-@property (nonatomic, strong) NSDate *today;
-@property (nonatomic, strong) NSDate *selectedDate;
-@property (nonatomic, strong) DataManager *dataManager;
-@property (nonatomic, strong) NSArray *weekDayArray;
 @property (nonatomic, strong) NSMutableArray *gameInfoList;
 @property (nonatomic, strong) NSArray *teamList;
 @property (nonatomic, strong) FXBlurView *maskView;
 @property (nonatomic, strong) UIButton *maskButton;
 @property (nonatomic, strong) UICollectionView *teamCollectionView;
 @property (nonatomic, strong) TeamHeaderView *headerView;
+@property (nonatomic, strong) CalendarView *calendarView;
 
-@property (weak, nonatomic) IBOutlet UIView *calendarView;
-@property (weak, nonatomic) IBOutlet UILabel *yearLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *chageButton;
 @property (weak, nonatomic) IBOutlet UIButton *gestureButton;
@@ -61,10 +53,9 @@ UIPopoverPresentationControllerDelegate>
     self.navigationController.navigationBar.hidden = YES;
     
     [self.view insertSubview:self.maskView belowSubview:self.gestureButton];
-    [self setupCollectionView];
+    
     [self addSwipe];
     
-    self.selectedDate = self.today;
     self.view.layer.contents = (id)[UIImage imageNamed:@"勇士.png"].CGImage;
 
     // Do any additional setup after loading the view, typically from a nib.
@@ -80,121 +71,41 @@ UIPopoverPresentationControllerDelegate>
     } else {
         self.teamId = [[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM];
     }
+    
+    [self.view addSubview:self.calendarView];
+    
+    NSInteger itemWidth = (NSInteger)([UIScreen mainScreen].bounds.size.width / 7 + 1);
+    [self.calendarView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view).offset(72);
+        make.centerX.mas_equalTo(self.view);
+        make.width.mas_equalTo(itemWidth * 7);
+        make.height.mas_equalTo((itemWidth - 10) * 7 + 51.5f);
+    }];
 }
 
 #pragma mark - private method (UI)
 
-- (void)setupCollectionView
-{
-    NSInteger itemWidth = (NSInteger)([UIScreen mainScreen].bounds.size.width / 7 + 1);
-    self.width.constant = itemWidth * 7;
-    self.height.constant = (itemWidth - 10) * 7 + 51.5f;
-    
-    [self.collectionView registerNib:[UINib nibWithNibName:SZCalendarCellIdentifier bundle:nil] forCellWithReuseIdentifier:SZCalendarCellIdentifier];
-}
-
 - (void)addSwipe
 {
-    UISwipeGestureRecognizer *swipLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gotoNextMonth:)];
+    UISwipeGestureRecognizer *swipLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self.calendarView action:@selector(gotoNextMonth:)];
     swipLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipLeft];
     
-    UISwipeGestureRecognizer *swipUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gotoNextMonth:)];
+    UISwipeGestureRecognizer *swipUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self.calendarView action:@selector(gotoNextMonth:)];
     swipUp.direction = UISwipeGestureRecognizerDirectionUp;
     [self.view addGestureRecognizer:swipUp];
     
-    UISwipeGestureRecognizer *swipRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gotoPreviousMonth:)];
+    UISwipeGestureRecognizer *swipRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self.calendarView action:@selector(gotoPreviousMonth:)];
     swipRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipRight];
     
-    UISwipeGestureRecognizer *swipDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(gotoPreviousMonth:)];
+    UISwipeGestureRecognizer *swipDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self.calendarView action:@selector(gotoPreviousMonth:)];
     swipDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipDown];
 }
 
-#pragma mark - private method
-
-- (NSInteger)firstWeekdayInThisMonth:(NSDate *)date
-{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    [calendar setFirstWeekday:1];//1.Sun. 2.Mon. 3.Thes. 4.Wed. 5.Thur. 6.Fri. 7.Sat.
-    NSDateComponents *comp = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
-    [comp setDay:1];
-    NSDate *firstDayOfMonthDate = [calendar dateFromComponents:comp];
-    
-    NSUInteger firstWeekday = [calendar ordinalityOfUnit:NSCalendarUnitWeekday inUnit:NSCalendarUnitWeekOfMonth forDate:firstDayOfMonthDate];
-    
-    return firstWeekday - 1;
-}
-
-- (NSInteger)totaldaysInMonth:(NSDate *)date
-{
-    NSRange daysInLastMonth = [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:date];
-    return daysInLastMonth.length;
-}
-
-- (NSInteger)day:(NSDate *)date
-{
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
-    return [components day];
-}
-
-- (NSInteger)month:(NSDate *)date
-{
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
-    return [components month];
-}
-
-- (NSInteger)year:(NSDate *)date
-{
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
-    return [components year];
-}
-
-- (NSString *)startTime:(NSTimeInterval)time
-{
-    NSTimeInterval BeiJingTime = time;
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:BeiJingTime];
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | kCFCalendarUnitHour | kCFCalendarUnitMinute) fromDate:date];
-    NSString *hour = [components hour] ? [NSString stringWithFormat:@"%ld", (long)[components hour]] : @"00";
-    NSString *minute = [components minute] ? [NSString stringWithFormat:@"%ld", (long)[components minute]] : @"00";
-    
-    return [NSString stringWithFormat:@"%@:%@", hour, minute];
-}
-
-- (NSDate *)previousMonth:(NSDate *)date
-{
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    dateComponents.month = -1;
-    NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:date options:0];
-    return newDate;
-}
-
-- (NSDate*)nextMonth:(NSDate *)date
-{
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    dateComponents.month = +1;
-    NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:date options:0];
-    return newDate;
-}
 
 #pragma mark - IBAction
-
-- (IBAction)gotoPreviousMonth:(UIButton *)sender
-{
-    [UIView transitionWithView:self.calendarView duration:0.5 options:UIViewAnimationOptionTransitionCurlDown animations:^(void) {
-        self.selectedDate = [self previousMonth:self.selectedDate];
-        
-    } completion:nil];
-}
-
-- (IBAction)gotoNextMonth:(UIButton *)sender
-{
-    [UIView transitionWithView:self.calendarView duration:0.5 options:UIViewAnimationOptionTransitionCurlUp animations:^(void) {
-        self.selectedDate = [self nextMonth:self.selectedDate];
-    } completion:nil];
-}
 
 - (IBAction)changeTeamAction:(UIButton *)sender
 {
@@ -225,7 +136,7 @@ UIPopoverPresentationControllerDelegate>
 
 - (IBAction)changeHomeTeamAction:(UIButton *)sender
 {
-    ChangeHomeTeamViewController *vc = [[ChangeHomeTeamViewController alloc] initWithDataManager:self.dataManager andDissmissBlock:^(NSString *teamId) {
+    ChangeHomeTeamViewController *vc = [[ChangeHomeTeamViewController alloc] initWithDataDissmissBlock:^(NSString *teamId) {
         if (![[NSUserDefaults standardUserDefaults] objectForKey:HOME_TEAM]) {
             self.teamId = teamId;
         }
@@ -273,92 +184,24 @@ UIPopoverPresentationControllerDelegate>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    if (collectionView == self.collectionView) {
-        return 2;
-    } else {
-        return 1;
-    }
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (collectionView == self.collectionView) {
-        if (section == 0) {
-            return 7;
-        } else {
-            return 42;
-        }
-    } else {
-        return 30;
-    }
+    return 30;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (collectionView == self.collectionView) {
-        DateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SZCalendarCellIdentifier forIndexPath:indexPath];
+    
+    TeamCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TeamCollectionViewCellIdentifier forIndexPath:indexPath];
         
-        if (indexPath.section == 0) {
-            
-            NSString *weekDay = [self.weekDayArray objectAtIndex:indexPath.item];
-            cell.vsTeamName = weekDay;
-            cell.dayColor = [UIColor whiteColor];
-            cell.cornerRadius = 0.f;
-            cell.nameColor = [UIColor colorWithRed:22.f / 255.f green:206.f / 255.f blue:255.f / 255.f alpha:1];
-            
-        } else {
-            
-            NSInteger firstWeekDay = [self firstWeekdayInThisMonth:self.selectedDate];
-            NSInteger totalDays = [self totaldaysInMonth:self.selectedDate];
-            NSInteger dayForDate = indexPath.item - firstWeekDay + 1;
-            
-            cell.day =  (0 < dayForDate && dayForDate <= totalDays) ? [NSString stringWithFormat:@"%ld", (long)dayForDate] : @"";
-            
-            if ([cell.day integerValue] == [self day:self.today] && [self month:self.selectedDate] == [self month:self.today] && [self year:self.selectedDate] == [self year:self.today]) {
-                cell.dayColor = [UIColor greenColor];
-                cell.cornerRadius = 8.f;
-            } else {
-                cell.dayColor = [UIColor whiteColor];
-                cell.cornerRadius = 0.f;
-            }
-            
-            for (GameInfo *info in self.gameInfoList) {
-                if (info.gameDay == dayForDate) {
-                    
-                    cell.nameColor = [UIColor colorWithRed:22.f / 255.f green:206.f / 255.f blue:255.f / 255.f alpha:1];
-                    if (info.isMaster) {
-                        cell.vsTeamName = [NSString stringWithFormat:@"%@", info.vsTeamName];
-                    } else {
-                        cell.vsTeamName = [NSString stringWithFormat:@"@%@", info.vsTeamName];
-                    }
-                    
-                    if (info.selfGoal) {
-                        cell.time = [NSString stringWithFormat:@"%ld-%ld", (long)info.selfGoal, (long)info.rivalGoal];
-                        if (!info.isWin) {
-                            cell.timeColor = [UIColor darkGrayColor];
-                        } else {
-                            cell.timeColor = [UIColor redColor];
-                        }
-                    } else {
-                        cell.time = [self startTime:info.startTime];
-                        cell.timeColor = [UIColor greenColor];
-                    }
-                    break;
-                }
-            }
-            
-            
-        }
-        return cell;
-    } else {
-        TeamCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TeamCollectionViewCellIdentifier forIndexPath:indexPath];
+    NSString *key = [self.teamList objectAtIndex:indexPath.item];
+    cell.image = [UIImage imageNamed:key];
+    cell.name = [[DataManager teamDic] objectForKey:key];
         
-        NSString *key = [self.teamList objectAtIndex:indexPath.item];
-        cell.image = [UIImage imageNamed:key];
-        cell.name = [[self.dataManager teamDic] objectForKey:key];
-        
-        return cell;
-    }
+    return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -392,25 +235,12 @@ UIPopoverPresentationControllerDelegate>
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (collectionView == self.collectionView) {
-        NSInteger itemWidth = (NSInteger)([UIScreen mainScreen].bounds.size.width / 7 + 1);
-        if (indexPath.section == 0) {
-            return CGSizeMake(itemWidth, itemWidth - 15);
-        } else {
-            return CGSizeMake(itemWidth, itemWidth - 10);
-        }
-    } else {
-        return CGSizeMake(teamWidth, 50);
-    }
+    return CGSizeMake(teamWidth, 50);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    if (collectionView == self.collectionView) {
-        return 0.5;
-    } else {
-        return 0;
-    }
+    return 0;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
@@ -420,24 +250,12 @@ UIPopoverPresentationControllerDelegate>
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    if (collectionView == self.collectionView) {
-        if (section == 0) {
-            return UIEdgeInsetsMake(0, 0, 0, 0);
-        } else {
-            return UIEdgeInsetsMake(0, 0, 0, 0);
-        }
-    } else {
-        return UIEdgeInsetsMake(0, 0, 0, 0);
-    }
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    if (collectionView == self.teamCollectionView) {
-        return CGSizeMake(self.teamCollectionView.bounds.size.width, 72);
-    } else {
-        return CGSizeZero;
-    }
+    return CGSizeMake(teamWidth, 64);
 }
 
 #pragma mark - UIAdaptivePresentationControllerDelegate
@@ -462,20 +280,16 @@ UIPopoverPresentationControllerDelegate>
     return YES;
 }
 
-#pragma mark - DataManagerDelegate
-
-- (void)loadingDataFinished:(DataManager *)dataManager
-{
-    self.gameInfoList = dataManager.gameInfoList;
-    [self.collectionView reloadData];
-}
-
-- (void)loadingDatafailured:(DataManager *)dataManager error:(NSError *)error
-{
-    
-}
 
 #pragma mark - getter
+
+- (CalendarView *)calendarView
+{
+    if (!_calendarView) {
+        _calendarView = [[CalendarView alloc] initWithTeamId:self.teamId];
+    }
+    return _calendarView;
+}
 
 - (UICollectionView *)teamCollectionView
 {
@@ -514,37 +328,14 @@ UIPopoverPresentationControllerDelegate>
     return _headerView;
 }
 
-- (NSArray *)weekDayArray
-{
-    if (!_weekDayArray) {
-        _weekDayArray = @[@"日",@"一",@"二",@"三",@"四",@"五",@"六"];
-    }
-    return _weekDayArray;
-}
-
-- (DataManager *)dataManager
-{
-    if (!_dataManager) {
-        _dataManager = [[DataManager alloc] initWithDelegate:self];
-    }
-    return _dataManager;
-}
-
-- (NSDate *)today
-{
-    if (!_today) {
-        _today = [NSDate date];
-    }
-    return _today;
-}
-
 - (NSArray *)teamList
 {
     if (!_teamList) {
-        _teamList = [[self.dataManager teamDic] allKeys];
+        _teamList = [[DataManager teamDic] allKeys];
     }
     return _teamList;
 }
+
 
 #pragma mark - setter
 
@@ -552,19 +343,11 @@ UIPopoverPresentationControllerDelegate>
 {
     _teamId = teamId;
     
-    self.titleLabel.text = [[self.dataManager teamDic] objectForKey:teamId];
+    self.titleLabel.text = [[DataManager teamDic] objectForKey:teamId];
     
     self.headerView.image = [UIImage imageNamed:teamId];
-    self.headerView.name = [[self.dataManager teamDic] objectForKey:teamId];
-    
-    [self.dataManager requestWithMonth:[self month:self.selectedDate] year:[self year:self.selectedDate] andTeamId:self.teamId];
-}
-
-- (void)setSelectedDate:(NSDate *)selectedDate
-{
-    _selectedDate = selectedDate;
-    self.yearLabel.text = [NSString stringWithFormat:@"%li－%.2ld",(long)[self year:selectedDate], (long)[self month:selectedDate]];
-    [self.dataManager requestWithMonth:[self month:self.selectedDate] year:[self year:self.selectedDate] andTeamId:self.teamId];
+    self.headerView.name = [[DataManager teamDic] objectForKey:teamId];
+    self.calendarView.teamId = teamId;
 }
 
 - (void)didReceiveMemoryWarning {

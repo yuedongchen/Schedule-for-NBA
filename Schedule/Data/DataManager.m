@@ -86,10 +86,9 @@
     return _gameInfoList;
 }
 
-- (NSDictionary *)teamDic
++ (NSDictionary *)teamDic
 {
-    if (!_teamDic) {
-        _teamDic = @{@"1" : @"亚特兰大老鹰",
+        return     @{@"1" : @"亚特兰大老鹰",
                      @"2"  : @"波士顿凯尔特人",
                      @"3"  : @"新奥尔良鹈鹕",
                      @"4"  : @"芝加哥公牛",
@@ -119,8 +118,6 @@
                      @"28"  : @"多伦多猛龙",
                      @"29"  : @"孟菲斯灰熊",
                      @"30"  : @"夏洛特黄蜂"};
-    }
-    return _teamDic;
 }
 
 

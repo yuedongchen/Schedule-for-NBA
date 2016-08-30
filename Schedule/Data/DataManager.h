@@ -20,11 +20,11 @@
 @interface DataManager : NSObject
 
 @property (nonatomic, strong) NSMutableArray *gameInfoList;
-@property (nonatomic, strong) NSDictionary *teamDic;
 
 @property (nonatomic, weak) id<DataMangerDelegate> delegate;
 
 - (id)initWithDelegate:(id<DataMangerDelegate>)delegate;
 - (void)requestWithMonth:(NSInteger)month year:(NSInteger)year andTeamId:(NSString *)tid;
++ (NSDictionary *)teamDic;
 
 @end

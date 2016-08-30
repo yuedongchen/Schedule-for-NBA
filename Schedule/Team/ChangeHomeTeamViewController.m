@@ -11,7 +11,6 @@
 
 @interface ChangeHomeTeamViewController ()
 
-@property (nonatomic, strong) DataManager *dataManager;
 @property (nonatomic, strong) void (^dissmissBlock)();
 
 @end
@@ -20,7 +19,7 @@
 
 static NSString * const reuseIdentifier = @"DateCell";
 
-- (id)initWithDataManager:(DataManager *)dataManager andDissmissBlock:(void (^)(NSString *))blcok
+- (id)initWithDataDissmissBlock:(void (^)(NSString *))blcok
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     
@@ -31,7 +30,6 @@ static NSString * const reuseIdentifier = @"DateCell";
     
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
-        self.dataManager = dataManager;
         self.dissmissBlock = blcok;
         self.collectionView.backgroundColor = [UIColor colorWithRed:250.f / 255.f green:250.f / 255.f blue:250.f / 255.f alpha:1];
     }
@@ -62,7 +60,7 @@ static NSString * const reuseIdentifier = @"DateCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    cell.vsTeamName = [[self.dataManager teamDic] objectForKey:[[[self.dataManager teamDic] allKeys] objectAtIndex:indexPath.item]];
+    cell.vsTeamName = [[DataManager teamDic] objectForKey:[[[DataManager teamDic] allKeys] objectAtIndex:indexPath.item]];
     
     return cell;
 }
@@ -71,12 +69,12 @@ static NSString * const reuseIdentifier = @"DateCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"您确定主队为“%@”", [[self.dataManager teamDic] objectForKey:[[[self.dataManager teamDic] allKeys] objectAtIndex:indexPath.item]]] message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"您确定主队为“%@”", [[DataManager teamDic] objectForKey:[[[DataManager teamDic] allKeys] objectAtIndex:indexPath.item]]] message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if (self.dissmissBlock) {
-            self.dissmissBlock([[[self.dataManager teamDic] allKeys] objectAtIndex:indexPath.item]);
+            self.dissmissBlock([[[DataManager teamDic] allKeys] objectAtIndex:indexPath.item]);
         }
         [self dismissViewControllerAnimated:YES completion:nil];
     }];

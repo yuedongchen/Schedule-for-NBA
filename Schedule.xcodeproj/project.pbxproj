@@ -17,6 +17,8 @@
 		FC48A5691D74351400286616 /* TeamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC48A55F1D74351400286616 /* TeamCollectionViewCell.xib */; };
 		FC48A56A1D74351400286616 /* TeamHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48A5611D74351400286616 /* TeamHeaderView.m */; };
 		FC48A56B1D74351400286616 /* TeamHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC48A5621D74351400286616 /* TeamHeaderView.xib */; };
+		FC48A56E1D74368800286616 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48A56D1D74368800286616 /* CalendarView.m */; };
+		FC48A5711D743E4D00286616 /* DateController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48A5701D743E4D00286616 /* DateController.m */; };
 		FC606F941D6712DC00C17136 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606F931D6712DC00C17136 /* main.m */; };
 		FC606F971D6712DC00C17136 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606F961D6712DC00C17136 /* AppDelegate.m */; };
 		FC606F9A1D6712DC00C17136 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606F991D6712DC00C17136 /* ViewController.m */; };
@@ -63,6 +65,11 @@
 		FC48A5601D74351400286616 /* TeamHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamHeaderView.h; sourceTree = "<group>"; };
 		FC48A5611D74351400286616 /* TeamHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamHeaderView.m; sourceTree = "<group>"; };
 		FC48A5621D74351400286616 /* TeamHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamHeaderView.xib; sourceTree = "<group>"; };
+		FC48A56C1D74368800286616 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
+		FC48A56D1D74368800286616 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
+		FC48A56F1D743E4D00286616 /* DateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateController.h; sourceTree = "<group>"; };
+		FC48A5701D743E4D00286616 /* DateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateController.m; sourceTree = "<group>"; };
+		FC532D2E1D751AF6005B9FD8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		FC606F8F1D6712DC00C17136 /* Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC606F931D6712DC00C17136 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC606F951D6712DC00C17136 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -130,6 +137,8 @@
 				FC48A5521D74351400286616 /* DateCell.h */,
 				FC48A5531D74351400286616 /* DateCell.m */,
 				FC48A5541D74351400286616 /* DateCell.xib */,
+				FC48A56C1D74368800286616 /* CalendarView.h */,
+				FC48A56D1D74368800286616 /* CalendarView.m */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -141,6 +150,8 @@
 				FC48A5571D74351400286616 /* DataManager.m */,
 				FC48A5581D74351400286616 /* GameInfo.h */,
 				FC48A5591D74351400286616 /* GameInfo.m */,
+				FC48A56F1D743E4D00286616 /* DateController.h */,
+				FC48A5701D743E4D00286616 /* DateController.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -205,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				FC606F931D6712DC00C17136 /* main.m */,
+				FC532D2E1D751AF6005B9FD8 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -416,9 +428,11 @@
 				FC48A56A1D74351400286616 /* TeamHeaderView.m in Sources */,
 				FC48A5681D74351400286616 /* TeamCollectionViewCell.m in Sources */,
 				FC48A5671D74351400286616 /* ChangeHomeTeamViewController.m in Sources */,
+				FC48A56E1D74368800286616 /* CalendarView.m in Sources */,
 				FC48A5651D74351400286616 /* DataManager.m in Sources */,
 				FC606F971D6712DC00C17136 /* AppDelegate.m in Sources */,
 				FC48A5661D74351400286616 /* GameInfo.m in Sources */,
+				FC48A5711D743E4D00286616 /* DateController.m in Sources */,
 				FC606F941D6712DC00C17136 /* main.m in Sources */,
 				FC48A5631D74351400286616 /* DateCell.m in Sources */,
 			);
@@ -566,6 +580,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Schedule/PrefixHeader.pch";
 				INFOPLIST_FILE = Schedule/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "yuedong-chen.com.Schedule";
@@ -581,6 +597,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Schedule/PrefixHeader.pch";
 				INFOPLIST_FILE = Schedule/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "yuedong-chen.com.Schedule";
