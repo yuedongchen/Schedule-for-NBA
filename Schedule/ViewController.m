@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "DateCell.h"
 #import "FXBlurView.h"
 #import "DataManager.h"
 #import "GameInfo.h"
@@ -50,11 +49,8 @@ UIPopoverPresentationControllerDelegate>
     [super viewDidLoad];
     
     self.navigationController.navigationBar.hidden = YES;
-    
     [self.view insertSubview:self.maskView belowSubview:self.gestureButton];
-    
     [self addSwipe];
-    
     self.view.layer.contents = (id)[UIImage imageNamed:@"勇士.png"].CGImage;
 
     // Do any additional setup after loading the view, typically from a nib.
