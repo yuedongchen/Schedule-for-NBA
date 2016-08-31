@@ -15,7 +15,6 @@
 #import "ChangeHomeTeamViewController.h"
 #import "TeamHeaderView.h"
 #import "Masonry.h"
-
 #import "CalendarView.h"
 
 NSString *const HOME_TEAM = @"HOME_TEAM";
@@ -152,15 +151,10 @@ UIPopoverPresentationControllerDelegate>
     }];
     
     vc.preferredContentSize = CGSizeMake(100, 400);
-    
     vc.modalPresentationStyle = UIModalPresentationPopover;
-    
     vc.popoverPresentationController.delegate = self;
-    
     vc.popoverPresentationController.sourceView = sender;
-    
     vc.popoverPresentationController.sourceRect = sender.bounds;
-    
     [self presentViewController:vc animated:YES completion:nil];
     
     self.maskButton = [[UIButton alloc] initWithFrame:self.view.bounds];
@@ -352,7 +346,6 @@ UIPopoverPresentationControllerDelegate>
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
