@@ -13,14 +13,12 @@
 @protocol DataMangerDelegate <NSObject>
 
 @optional
-- (void)loadingDataFinished:(DataManager *)dataManager;
+- (void)loadingDataFinished:(NSArray *)gameInfoList;
 - (void)loadingDatafailured:(DataManager *)dataManager error:(NSError *)error;
 
 @end
 
 @interface DataManager : NSObject
-
-@property (nonatomic, strong) NSMutableArray *gameInfoList;
 
 @property (nonatomic, weak) id<DataMangerDelegate> delegate;
 

@@ -10,6 +10,12 @@
 #import "AFNetworking.h"
 #import "GameInfo.h"
 
+@interface DataManager ()
+
+@property (nonatomic, strong) NSMutableDictionary *gameInfosCache;
+
+@end
+
 @implementation DataManager
 
 - (id)initWithDelegate:(id<DataMangerDelegate>)delegate
@@ -23,10 +29,19 @@
 
 - (void)requestWithMonth:(NSInteger)month year:(NSInteger)year andTeamId:(NSString *)tid
 {
-    [self.gameInfoList removeAllObjects];
+    NSMutableArray *gameInfoList = [NSMutableArray array];
+    NSString *gameInfoListKey = [NSString stringWithFormat:@"%ld_%ld_%@", month, year, tid];
+    
+    if ([self.gameInfosCache objectForKey:gameInfoListKey]) {
+        NSLog(@"已经有缓存了");
+        gameInfoList = [self.gameInfosCache objectForKey:gameInfoListKey];
+        if ([self.delegate respondsToSelector:@selector(loadingDataFinished:)]) {
+            [self.delegate loadingDataFinished:gameInfoList];
+        }
+        return;
+    }
     
     NSString *str = [NSString stringWithFormat:@"http://sportsnba.qq.com/match/calendar?month=%ld&teamId=%@&year=%ld", (long)month, tid, (long)year];
-    
     NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -59,11 +74,12 @@
             info.vsTeamId = [dayValue objectForKey:@"vsTeamId"];
             info.vsTeamName = [dayValue objectForKey:@"vsTeamName"];
             
-            [self.gameInfoList addObject:info];
+            [gameInfoList addObject:info];
         }
         
+        [self.gameInfosCache setObject:gameInfoList forKey:gameInfoListKey];
         if ([self.delegate respondsToSelector:@selector(loadingDataFinished:)]) {
-            [self.delegate loadingDataFinished:self];
+            [self.delegate loadingDataFinished:gameInfoList];
         }
         
     }failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -78,12 +94,12 @@
 
 }
 
-- (NSMutableArray *)gameInfoList
+- (NSMutableDictionary *)gameInfosCache
 {
-    if (!_gameInfoList) {
-        _gameInfoList = [NSMutableArray array];
+    if (!_gameInfosCache) {
+        _gameInfosCache = [NSMutableDictionary dictionary];
     }
-    return _gameInfoList;
+    return _gameInfosCache;
 }
 
 + (NSDictionary *)teamDic

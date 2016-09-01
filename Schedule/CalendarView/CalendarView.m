@@ -26,7 +26,7 @@ DataMangerDelegate
 >
 
 @property (nonatomic, strong) NSDate *selectedDate;
-@property (nonatomic, strong) NSMutableArray *gameInfoList;
+@property (nonatomic, strong) NSArray *gameInfoList;
 @property (nonatomic, strong) NSArray *weekDayArray;
 @property (nonatomic, strong) DataManager *dataManager;
 
@@ -199,9 +199,9 @@ DataMangerDelegate
 
 #pragma mark - DataManagerDelegate
 
-- (void)loadingDataFinished:(DataManager *)dataManager
+- (void)loadingDataFinished:(NSArray *)gameInfoList
 {
-    self.gameInfoList = dataManager.gameInfoList;
+    self.gameInfoList = gameInfoList;
     [self reloadData];
 }
 
