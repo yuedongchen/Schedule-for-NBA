@@ -67,7 +67,7 @@
     return newDate;
 }
 
-+ (NSDate*)nextMonth:(NSDate *)date
++ (NSDate *)nextMonth:(NSDate *)date
 {
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     dateComponents.month = +1;

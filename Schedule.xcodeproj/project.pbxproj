@@ -27,6 +27,7 @@
 		FC606FA21D6712DC00C17136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC606FA01D6712DC00C17136 /* LaunchScreen.storyboard */; };
 		FC606FAD1D6712DC00C17136 /* ScheduleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606FAC1D6712DC00C17136 /* ScheduleTests.m */; };
 		FC606FB81D6712DC00C17136 /* ScheduleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC606FB71D6712DC00C17136 /* ScheduleUITests.m */; };
+		FC6B65A31D76E68000BD0727 /* TeamCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6B65A21D76E68000BD0727 /* TeamCollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		FC606FB31D6712DC00C17136 /* ScheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScheduleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC606FB71D6712DC00C17136 /* ScheduleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleUITests.m; sourceTree = "<group>"; };
 		FC606FB91D6712DC00C17136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC6B65A11D76E68000BD0727 /* TeamCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamCollectionView.h; sourceTree = "<group>"; };
+		FC6B65A21D76E68000BD0727 /* TeamCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamCollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +170,8 @@
 				FC48A5601D74351400286616 /* TeamHeaderView.h */,
 				FC48A5611D74351400286616 /* TeamHeaderView.m */,
 				FC48A5621D74351400286616 /* TeamHeaderView.xib */,
+				FC6B65A11D76E68000BD0727 /* TeamCollectionView.h */,
+				FC6B65A21D76E68000BD0727 /* TeamCollectionView.m */,
 			);
 			path = Team;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				FC606F971D6712DC00C17136 /* AppDelegate.m in Sources */,
 				FC48A5661D74351400286616 /* GameInfo.m in Sources */,
 				FC48A5711D743E4D00286616 /* DateController.m in Sources */,
+				FC6B65A31D76E68000BD0727 /* TeamCollectionView.m in Sources */,
 				FC606F941D6712DC00C17136 /* main.m in Sources */,
 				FC48A5631D74351400286616 /* DateCell.m in Sources */,
 			);

@@ -105,7 +105,7 @@ DataMangerDelegate
                 if (info.isMaster) {
                     cell.vsTeamName = [NSString stringWithFormat:@"%@", info.vsTeamName];
                 } else {
-                    cell.vsTeamName = [NSString stringWithFormat:@"@%@", info.vsTeamName];
+                    cell.vsTeamName = [NSString stringWithFormat:@"→%@", info.vsTeamName];
                 }
                 
                 if (info.selfGoal) {
@@ -174,7 +174,7 @@ DataMangerDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger itemWidth = (NSInteger)([UIScreen mainScreen].bounds.size.width / 7 + 1);
+    NSInteger itemWidth = (NSInteger)(SCREENWIDTH / 7 + 1);
     if (indexPath.section == 0) {
         return CGSizeMake(itemWidth, itemWidth - 15);
     } else {
