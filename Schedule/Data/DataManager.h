@@ -12,6 +12,7 @@
 
 @protocol DataMangerDelegate <NSObject>
 
+@optional
 - (void)loadingDataFinished:(DataManager *)dataManager;
 - (void)loadingDatafailured:(DataManager *)dataManager error:(NSError *)error;
 

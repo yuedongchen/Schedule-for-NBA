@@ -21,7 +21,6 @@ NSString *const CalendarHeaderIdentifier = @"header";
 
 @interface CalendarView ()
 <UICollectionViewDataSource,
-UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout,
 DataMangerDelegate
 >
@@ -73,17 +72,13 @@ DataMangerDelegate
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CalendarCellIdentifier forIndexPath:indexPath];
-    
     if (indexPath.section == 0) {
-        
         NSString *weekDay = [self.weekDayArray objectAtIndex:indexPath.item];
         cell.vsTeamName = weekDay;
         cell.dayColor = [UIColor whiteColor];
         cell.cornerRadius = 0.f;
         cell.nameColor = RGBA(22, 206, 255, 1);
-        
     } else {
-        
         NSInteger firstWeekDay = [DateController firstWeekdayInThisMonth:self.selectedDate];
         NSInteger totalDays = [DateController totaldaysInMonth:self.selectedDate];
         NSInteger dayForDate = indexPath.item - firstWeekDay + 1;
@@ -163,13 +158,6 @@ DataMangerDelegate
     return headerView;
 }
 
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -215,11 +203,6 @@ DataMangerDelegate
 {
     self.gameInfoList = dataManager.gameInfoList;
     [self reloadData];
-}
-
-- (void)loadingDatafailured:(DataManager *)dataManager error:(NSError *)error
-{
-    
 }
 
 #pragma mark - Action
