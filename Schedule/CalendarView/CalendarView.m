@@ -278,6 +278,7 @@ DataMangerDelegate
 - (void)setTeamId:(NSString *)teamId
 {
     _teamId = teamId;
+    [self reloadData];
     
     if (_selectedDate) {
         [self.dataManager requestWithMonth:[DateController month:self.selectedDate] year:[DateController year:self.selectedDate] andTeamId:self.teamId];
@@ -288,6 +289,7 @@ DataMangerDelegate
 {
     _selectedDate = selectedDate;
     self.yearLabel.text = [NSString stringWithFormat:@"%li－%.2ld",(long)[DateController year:selectedDate], (long)[DateController month:selectedDate]];
+    [self reloadData];
 
     if (_teamId) {
         [self.dataManager requestWithMonth:[DateController month:self.selectedDate] year:[DateController year:self.selectedDate] andTeamId:self.teamId];
